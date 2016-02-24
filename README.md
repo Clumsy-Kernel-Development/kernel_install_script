@@ -8,7 +8,7 @@ A kernel install script that can be executed in aroma during a ROM installation.
 	- package_extract_dir("kernel", "/tmp/kernel");
 	- set_perm(0, 0, 0755, "/tmp/kernel/installKernel.sh");
 	- run_program("/tmp/kernel/installKernel.sh");
-	
+
 # File Tree
 +-- kernel
 |    +-- ClumsyKernelTweaks             # setAddress source files
