@@ -10,25 +10,25 @@ A kernel install script that can be executed in aroma during a ROM installation.
 	- run_program("/tmp/kernel/installKernel.sh");
 
 # File Tree
-+-- kernel
-|    +-- ClumsyKernelTweaks             # setAddress source files
-|        +-- Clumsy_Kernel_Tweaks.apk   #Put this apk here
-|    +-- dt                         	# Made when compile has been executed
-|        +-- dt.img             
-|    +-- modules                     	# Put all your .ko moudles in this directory
-|        +-- Multiple .ko moudles
-|    +-- tools                     		# Tools used to pack and unpack boot.img
++-- kernel  
+|    +-- ClumsyKernelTweaks             # setAddress source files  
+|        +-- Clumsy_Kernel_Tweaks.apk   #Put this apk here  
+|    +-- dt                         	# Made when compile has been executed  
+|        +-- dt.img               
+|    +-- modules                     	# Put all your .ko moudles in this directory  
+|        +-- Multiple .ko moudles  
+|    +-- tools                     		# Tools used to pack and unpack boot.img  
 |        +-- bin                 	
-|			+-- busybox
-|			+-- file
-|			+-- lz4
-|			+-- magic
-|			+-- mkbootfs
-|			+-- mkbootimg
-|			+-- unpackbootimg
-|			+-- xz
-|        +-- unpackimg.sh 
-|        +-- repackimg.sh 
-|    +-- zImage                     	# Put your zImage here
-|        +-- zImage
-|    +-- installKernel.sh               # Install script
+|			+-- busybox  
+|			+-- file  
+|			+-- lz4  
+|			+-- magic  
+|			+-- mkbootfs  
+|			+-- mkbootimg  
+|			+-- unpackbootimg  
+|			+-- xz  
+|        +-- unpackimg.sh   
+|        +-- repackimg.sh   
+|    +-- zImage                     	# Put your zImage here  
+|        +-- zImage  
+|    +-- installKernel.sh               # Install script  
