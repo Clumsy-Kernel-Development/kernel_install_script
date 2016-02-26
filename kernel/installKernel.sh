@@ -35,14 +35,14 @@ log(){
 }
 
 
-# Mount System
-log "--> Mounting System"
-$busybox mount "/system" >> $logFile
-
 #Set Permissions
 log "--> Setting the permissions of tools"
 chmod 0755 $tools/*.sh >> $logFile
 chmod 0755 $busybox >> $logFile
+
+# Mount System
+log "--> Mounting System"
+$busybox mount "/system" >> $logFile
 
 # Get current boot
 log "--> Getting the current boot image from $bootPartition"
