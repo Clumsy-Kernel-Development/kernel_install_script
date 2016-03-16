@@ -3,8 +3,8 @@
 # Kernel install shell script
 # Made by ~clumsy~  using AIK from osm0sis
 
-# Location of the boot partition of the device
-bootPartition=/dev/block/platform/msm_sdcc.1/by-name/boot
+# Recovery fstab
+fstab=/cache/recovery/recovery.fstab 
 # The current DIR of the script
 dir=$(dirname $0)
 # Location of the tools
@@ -34,6 +34,29 @@ log(){
 	fi
 }
 
+getBootPartition(){
+	# Read all lines in the file
+	while read line; do
+    	# Scan the line for "/boot"
+    		for word in $line; do
+			if [ $word == "/boot" ]
+			then	
+				# Look for "/dev", then we know it is the boot partition
+				for word in $line; do
+					if [ "${word:0:4}" == "/dev" ]
+					then
+						# Set boot partition
+						bootPartition=$word
+					fi
+				done		
+			fi
+    		done
+	done < "$1"
+}
+
+# Location of the boot partition of the device
+getBootPartition $fstab >> $logFile
+log "--> The boot partition is $bootPartition" >> $logFile
 
 #Set Permissions
 log "--> Setting the permissions of tools"
@@ -74,6 +97,15 @@ then
 	$busybox cp $dir/dt/dt.img $tools/split_img/stockboot.img-dtb >> $logFile
 else
 	log "--> dt.img does not exist"
+fi
+
+# Move cmdline
+if [ -f $dir/cmdline/cmdline ]
+then
+	log "--> Moving cmdline"
+	$busybox cp $dir/cmdline/cmdline $tools/split_img/stockboot.img-cmdline >> $logFile
+else
+	log "--> cmdline does not exist"
 fi
 
 # Making new boot image
